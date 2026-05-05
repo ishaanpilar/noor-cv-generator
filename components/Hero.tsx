@@ -48,10 +48,10 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="hidden sm:block fade-up delay-2">
+        <div className="fade-up delay-2 mx-auto sm:mx-0">
           <div className="relative">
             <div className="absolute -inset-3 rounded-2xl bg-[var(--accent-soft)] blur-xl"></div>
-            <div className="relative w-48 h-60 rounded-xl border border-[var(--border-strong)] overflow-hidden shadow-[0_8px_30px_-10px_rgba(15,23,42,0.25)] bg-[#ebebe6]">
+            <div className="relative w-48 h-60 rounded-xl border border-[var(--border-strong)] overflow-hidden shadow-[0_8px_30px_-10px_rgba(15,23,42,0.25)] bg-[#ebebe6] mx-auto">
               <Image
                 src="/noor.jpg"
                 alt="Noorafshan Aftab"
