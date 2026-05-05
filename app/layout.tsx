@@ -19,6 +19,26 @@ export const metadata: Metadata = {
   title: "Noorafshan Aftab — Customer Success & Implementation",
   description:
     "Law graduate turned SaaS operator. Three roles at Lumber in twelve months — from legal intern to customer success and implementation specialist for US construction payroll clients.",
+  openGraph: {
+    title: "Noorafshan Aftab — Customer Success & Implementation",
+    description:
+      "Law graduate turned SaaS operator. Three roles at Lumber in twelve months — from legal intern to customer success and implementation specialist for US construction payroll clients.",
+    images: [
+      {
+        url: "/noor.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Photo of Noorafshan Aftab",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Noorafshan Aftab — Customer Success & Implementation",
+    description:
+      "Law graduate turned SaaS operator. Three roles at Lumber in twelve months — from legal intern to customer success and implementation specialist for US construction payroll clients.",
+    images: ["/noor.jpg"],
+  },
 };
 
 export default function RootLayout({
