@@ -1,8 +1,10 @@
 "use client";
 
+import Image from "next/image";
 import { useState } from "react";
 import ReactMarkdown from "react-markdown";
 import type { TailorResponse } from "@/lib/types";
+import { profile } from "@/lib/profile";
 
 type Step = "passcode" | "form" | "loading" | "result";
 
@@ -372,6 +374,23 @@ function Result({
       {tab === "cv" && (
         <div className="card p-6 sm:p-10">
           <div className="cv-print">
+            <div className="cv-print__header">
+              <div className="cv-print__avatar">
+                <Image src={profile.photo} alt={profile.name} fill sizes="112px" className="object-cover" />
+              </div>
+              <div className="cv-print__hero">
+                <div className="cv-print__title-wrap">
+                  <h1>{profile.name}</h1>
+                  <p className="cv-print__subtitle">{profile.tagline}</p>
+                </div>
+                <div className="cv-print__contact-grid">
+                  <span>{profile.email}</span>
+                  <span>{profile.phone}</span>
+                  <a href={profile.linkedin} target="_blank" rel="noreferrer">LinkedIn profile</a>
+                  <span>{profile.location}</span>
+                </div>
+              </div>
+            </div>
             <ReactMarkdown>{result.tailoredCvMarkdown}</ReactMarkdown>
           </div>
         </div>
