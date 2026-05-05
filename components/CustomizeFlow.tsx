@@ -294,9 +294,11 @@ function Result({
 }) {
   const [tab, setTab] = useState<"cv" | "letter">("cv");
   const [copied, setCopied] = useState(false);
+  const [editMode, setEditMode] = useState(false);
+  const [editedMarkdown, setEditedMarkdown] = useState(result.tailoredCvMarkdown);
 
   function downloadMarkdown() {
-    const blob = new Blob([result.tailoredCvMarkdown], { type: "text/markdown" });
+    const blob = new Blob([activeMarkdown], { type: "text/markdown" });
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
@@ -314,6 +316,23 @@ function Result({
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   }
+
+  function startEdit() {
+    setEditedMarkdown(result.tailoredCvMarkdown);
+    setEditMode(true);
+    setTab("cv");
+  }
+
+  function saveEdit() {
+    setEditMode(false);
+  }
+
+  function cancelEdit() {
+    setEditedMarkdown(result.tailoredCvMarkdown);
+    setEditMode(false);
+  }
+
+  const activeMarkdown = editMode ? editedMarkdown : result.tailoredCvMarkdown;
 
   const score = Math.max(0, Math.min(100, result.matchScore));
   const scoreColor = score >= 80 ? "text-emerald-600" : score >= 60 ? "text-amber-600" : "text-rose-600";
@@ -372,9 +391,38 @@ function Result({
       </div>
 
       {tab === "cv" && (
-        <div className="card p-6 sm:p-10">
-          <div className="cv-print">
-            <div className="cv-print__header">
+        <div className="card p-6 sm:p-10 space-y-6">
+          <div className="flex flex-wrap items-center gap-3">
+            <div>
+              <h2 className="text-lg font-semibold">CV editor</h2>
+              <p className="text-[13px] text-[var(--muted-2)]">Edit the generated CV markdown before downloading or printing.</p>
+            </div>
+            <div className="flex gap-2">
+              {!editMode ? (
+                <button onClick={startEdit} className="btn-secondary text-[13px]">Edit CV</button>
+              ) : (
+                <>
+                  <button onClick={saveEdit} className="btn-accent text-[13px]">Save edits</button>
+                  <button onClick={cancelEdit} className="btn-secondary text-[13px]">Cancel</button>
+                </>
+              )}
+            </div>
+          </div>
+
+          {editMode && (
+            <div className="mb-6">
+              <label className="block text-[13px] font-semibold mb-2">Edit CV markdown</label>
+              <textarea
+                value={editedMarkdown}
+                onChange={(e) => setEditedMarkdown(e.target.value)}
+                className="w-full min-h-[18rem] rounded-xl border border-[var(--border-strong)] bg-white p-4 text-[14px] leading-relaxed font-mono text-[var(--foreground)]"
+              />
+            </div>
+          )}
+
+          <div className="card p-6 sm:p-7 bg-[rgba(255,255,255,0.92)] shadow-[inset_0_0_0_1px_rgba(15,23,42,0.04)]">
+            <div className="cv-print">
+              <div className="cv-print__header">
               <div className="cv-print__avatar">
                 <Image src={profile.photo} alt={profile.name} fill sizes="112px" className="object-cover" />
               </div>
