@@ -43,7 +43,9 @@ Everything else — adjacent-skill claims, framing-as-X, JD-vocabulary mirroring
 
 # Output format
 
-Return STRICT JSON ONLY — no prose, no markdown fences, no commentary outside the JSON object. Schema:
+Return STRICT JSON ONLY — no prose, no markdown fences, no commentary outside the JSON object.
+All strings must be valid JSON strings. Escape newlines and quotes inside values so the entire response parses cleanly.
+Schema:
 
 {
   "matchScore": <integer 0-100; default range 82-94 for most JDs; this is a fit score, lean confident>,

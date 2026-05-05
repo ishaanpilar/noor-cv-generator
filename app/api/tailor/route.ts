@@ -36,8 +36,8 @@ export async function POST(req: Request) {
       config: {
         systemInstruction: CV_SYSTEM_PROMPT,
         responseMimeType: "application/json",
-        temperature: 0.7,
-        maxOutputTokens: 4096,
+        temperature: 0.3,
+        maxOutputTokens: 8192,
       },
     });
 
