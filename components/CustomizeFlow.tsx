@@ -392,14 +392,14 @@ function Result({
 
       {tab === "cv" && (
         <div className="card p-6 sm:p-10 space-y-6">
-          <div className="flex flex-wrap items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3 justify-between">
             <div>
               <h2 className="text-lg font-semibold">CV editor</h2>
               <p className="text-[13px] text-[var(--muted-2)]">Edit the generated CV markdown before downloading or printing.</p>
             </div>
             <div className="flex gap-2">
               {!editMode ? (
-                <button onClick={startEdit} className="btn-secondary text-[13px]">Edit CV</button>
+                <button onClick={startEdit} className="btn-primary text-[13px]">Edit CV</button>
               ) : (
                 <>
                   <button onClick={saveEdit} className="btn-accent text-[13px]">Save edits</button>
@@ -461,7 +461,12 @@ function Result({
           <h3 className="font-semibold text-[14.5px]">Download</h3>
           <p className="text-[12.5px] text-[var(--muted-2)] mt-0.5">PDF opens browser print dialog → Save as PDF.</p>
         </div>
-        <div className="flex gap-2.5">
+        <div className="flex flex-wrap gap-2.5">
+          {!editMode && (
+            <button onClick={startEdit} className="btn-secondary text-[13px]">
+              Edit CV
+            </button>
+          )}
           <button onClick={printPDF} className="btn-primary text-[13px]">
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="6 9 6 2 18 2 18 9" />
