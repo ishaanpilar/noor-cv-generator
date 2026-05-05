@@ -213,7 +213,7 @@ a { color: inherit; }
 .cv-print strong { font-weight: 600; color: #0c1424; }
 .cv-print em { color: #475569; }
 .cv-print hr { border: none; border-top: 1px solid var(--border); margin: 1.2rem 0; }
-..cv-print a { color: var(--accent); text-decoration: none; }
+.cv-print a { color: var(--accent); text-decoration: none; }
 
 .cv-print {
   background: linear-gradient(180deg, #f8fbff 0%, #ffffff 100%);
