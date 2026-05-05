@@ -14,7 +14,21 @@ export default function Hero() {
             <span>{profile.location.split(",")[0]}</span>
           </div>
 
-          <h1 className="fade-up delay-1 text-[2.5rem] sm:text-[3.4rem] leading-[1.05] font-semibold">
+          <div className="fade-up delay-1 flex items-center gap-4 mb-4 sm:hidden">
+            <div className="relative w-20 h-20 rounded-full overflow-hidden border border-[var(--border-strong)] shadow-[0_8px_24px_-14px_rgba(15,23,42,0.25)] bg-[#ebebe6]">
+              <Image
+                src="/noor.jpg"
+                alt="Noorafshan Aftab"
+                fill
+                priority
+                sizes="80px"
+                className="object-cover"
+              />
+            </div>
+            <h1 className="text-[2rem] leading-[1.05] font-semibold">{profile.name}.</h1>
+          </div>
+
+          <h1 className="hidden sm:block fade-up delay-1 text-[2.5rem] sm:text-[3.4rem] leading-[1.05] font-semibold">
             {profile.name}.
           </h1>
 
@@ -48,7 +62,7 @@ export default function Hero() {
           </div>
         </div>
 
-        <div className="fade-up delay-2 mx-auto sm:mx-0">
+        <div className="hidden sm:block fade-up delay-2 mx-auto sm:mx-0">
           <div className="relative">
             <div className="absolute -inset-3 rounded-2xl bg-[var(--accent-soft)] blur-xl"></div>
             <div className="relative w-48 h-60 rounded-xl border border-[var(--border-strong)] overflow-hidden shadow-[0_8px_30px_-10px_rgba(15,23,42,0.25)] bg-[#ebebe6] mx-auto">
